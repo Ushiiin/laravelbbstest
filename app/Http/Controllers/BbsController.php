@@ -9,7 +9,7 @@ class BbsController extends Controller
 {
     // Indexページの表示
     public function index() {
-        return view('bbs.index');
+        return view('bsb.index');
     }
 
     // 投稿された内容を表示するページ

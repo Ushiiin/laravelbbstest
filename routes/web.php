@@ -24,9 +24,9 @@ Route::get('/', function () {
 
 // /bbs にアクセスが来た場合にBbsControllerのindex関数を参照します。
 // Route::get('/bbs', 'BbsController@index');
-Route::get('/bbs', [BbsController::class, 'index']);
+Route::get('/bsb', [BbsController::class, 'index']);
 // methodがpostなことに注意
-Route::post('/bbs', [BbsController::class, 'create']);
+Route::post('/bsb', [BbsController::class, 'create']);
 
 // Route::get('/user', 'UserController@index');
 Route::get('/user', [UserController::class, 'index']);
