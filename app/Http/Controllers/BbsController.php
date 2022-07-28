@@ -31,10 +31,10 @@ class BbsController extends Controller
 
         // データベーステーブルbbsに存在するデータを取得し、bbs.indexへ渡す
         $bbs = Bbs::all();
-        return view('bbs.index', ["bbs" => $bbs]); 
+        return view('bsb.index', ["bbs" => $bbs]); 
 
         // 変数をビューに渡す
-        return view('bbs.index')->with([
+        return view('bsb.index')->with([
             "name" => $name,
             "comment"  => $comment,
         ]);

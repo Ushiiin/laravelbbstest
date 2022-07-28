@@ -34,11 +34,10 @@
 @endforeach
 @endisset
 
-
 <!-- フォームエリア -->
 <h2>フォーム</h2>
-<form action="/bbs" method="POST">
-    名前:<br>
+<form action="{{ url('/bsb')}}" method="POST">
+    名前AA:<br>
     <input name="name">
     <br>
     コメント:<br>
