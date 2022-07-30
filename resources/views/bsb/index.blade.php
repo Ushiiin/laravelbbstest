@@ -37,7 +37,7 @@
 <!-- フォームエリア -->
 <h2>フォーム</h2>
 <form action="{{ url('/bsb')}}" method="POST">
-    名前AA:<br>
+    名前X:<br>
     <input name="name">
     <br>
     コメント:<br>
