@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BbsController;
+use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\TimelineUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +34,13 @@ Route::post('/bsb', [BbsController::class, 'create']);
 Route::get('/user', [UserController::class, 'index']);
 
 Route::get('/sample', [SampleController::class, 'showPage']);
+
+// アップロードフォームを表示
+Route::get('/up/file_upload', [FileUploadController::class, "index"])->name('file_upload.index');
+// アップロード処理をする
+Route::post('/up/file_upload/action', [FileUploadController::class, "action"])->name('file_upload.action');
+
+// アップロードフォームを表示
+Route::get('/up/timeline_upload', [TimelineUploadController::class, "index"])->name('timeline_upload.index');
+// アップロード処理をする
+Route::post('/up/timeline_upload/action', [TimelineUploadController::class, "action"])->name('timeline_upload.action');
