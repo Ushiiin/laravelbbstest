@@ -28,15 +28,15 @@
         <h3>CO2換算</h3>
         <p>移動の種類と対応CO2排出量のテーブル</p>
         <label for="vehicle">自動車</label>
-        <input type="number" id="veh" value=131> g-CO2/人km
+        <input type="number" id="vehval" value=131> g-CO2/人km
         <button type="button" id="vehbut">Update</button>
         <br>
         <label for="train">電車　</label>
-        <input type="number" id="tra" value=28> g-CO2/人km
+        <input type="number" id="traval" value=28> g-CO2/人km
         <button type="button" id="trabut">Update</button>
         <br>
         <label for="flying">飛行機</label>
-        <input type="number" id="fly" value=133> g-CO2/人km
+        <input type="number" id="flyval" value=133> g-CO2/人km
         <button type="button" id="flybut">Update</button>
         <br>
         <button id="co2btn">グラフ表示</button>
@@ -70,6 +70,21 @@
                     {
                         label: '移動回数',
                         data: nums,
+                        backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
                     },
                 ],
             },
@@ -96,6 +111,21 @@
                     {
                         label: '移動距離',
                         data: dist,
+                        backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
                     },
                 ],
             },
@@ -169,9 +199,33 @@
         let temp = "myself"
         console.log(moveTypeCost[temp], "AAA")
 
+        // 原単位Update
+        vehbut.onclick = function(e) {
+            let vehval = $('#vehval').val();
+            moveTypeCost.vehicle = Number(vehval);
+            console.log(moveTypeCost);
+        }
+
+        trabut.onclick = function(e) {
+            let traval = $('#traval').val();
+            moveTypeCost.train = Number(traval);
+            console.log(moveTypeCost);
+        }
+
+        flybut.onclick = function(e) {
+            let flyval = $('#flyval').val();
+            moveTypeCost.flying = Number(flyval);
+            console.log(moveTypeCost);
+        }
+
+
         // CO2のグラフを表示
         const co2btn = document.querySelector("#co2btn")
+        let ctx_co2 = document.getElementById('chart_id_co2'); // id='chart_id'
+        let myBarChart_co2 = null;
         co2btn.onclick = function(e) {
+            // CO2 volumeをリセット
+            co2Volume = [0,0,0,0,0]
             for (key in move_total_distance) {
                 console.log(key);
                 console.log(moveTypeDefinition[key]);
@@ -184,17 +238,35 @@
                 }
             }
             console.log(co2Volume);
-
+            // 2回目以降の場合はDestoryする必要あり。
+            if (myBarChart_co2){
+                console.log("null hantei")
+                myBarChart_co2.destroy();
+            }
             // グラフ描写
-            let ctx_co2 = document.getElementById('chart_id_co2'); // id='chart_id'
-            let myBarChart_co2 = new Chart(ctx_co2, {
+            myBarChart_co2 = new Chart(ctx_co2, {
                 type: 'bar',
                 data: {
                     labels: moveTypeList,
                     datasets: [
                         {
-                            label: '移動回数',
+                            label: 'CO2 emission',
                             data: co2Volume,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(201, 203, 207, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(255, 159, 64)',
+                                'rgb(75, 192, 192)',
+                                'rgb(54, 162, 235)',
+                                'rgb(201, 203, 207)'
+                            ],
+                            borderWidth: 1
                         },
                     ],
                 },
@@ -210,8 +282,6 @@
                     },
                 },
             });
-
-
         }
     </script>
 
