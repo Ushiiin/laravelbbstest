@@ -84,7 +84,8 @@
                             'rgb(54, 162, 235)',
                             'rgb(201, 203, 207)'
                         ],
-                        borderWidth: 1
+                        borderWidth: 1,
+                        barPercentage: 0.5
                     },
                 ],
             },
@@ -125,7 +126,8 @@
                             'rgb(54, 162, 235)',
                             'rgb(201, 203, 207)'
                         ],
-                        borderWidth: 1
+                        borderWidth: 1,
+                        barPercentage: 0.5
                     },
                 ],
             },
@@ -266,7 +268,8 @@
                                 'rgb(54, 162, 235)',
                                 'rgb(201, 203, 207)'
                             ],
-                            borderWidth: 1
+                            borderWidth: 1,
+                            barPercentage: 0.5
                         },
                     ],
                 },

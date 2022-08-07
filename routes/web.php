@@ -9,6 +9,7 @@ use App\Http\Controllers\BbsController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\TimelineUploadController;
 use App\Http\Controllers\SimpleViewController;
+use App\Http\Controllers\TopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,10 @@ use App\Http\Controllers\SimpleViewController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 全ての生きているページへのリンク
+Route::get('/top', [TopController::class, 'index']);
+
 
 // /bbs にアクセスが来た場合にBbsControllerのindex関数を参照します。
 // Route::get('/bbs', 'BbsController@index');
