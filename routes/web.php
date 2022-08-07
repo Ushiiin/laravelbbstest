@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BbsController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\TimelineUploadController;
+use App\Http\Controllers\SimpleViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,6 @@ Route::post('/up/file_upload/action', [FileUploadController::class, "action"])->
 Route::get('/up/timeline_upload', [TimelineUploadController::class, "index"])->name('timeline_upload.index');
 // アップロード処理をする
 Route::post('/up/timeline_upload/action', [TimelineUploadController::class, "action"])->name('timeline_upload.action');
+
+// アップロードフォームを表示
+Route::get('/up/simple_view', [SimpleViewController::class, "index"]);
