@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Top Pあge</title>
+        <title>Top Page</title>
     </head>
     <body>
         <h1>Top Page</h1>
